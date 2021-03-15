@@ -32,7 +32,6 @@ class Calculator {
         if(this.next.length >= 28) { this.next = ''; return }
         let inputString = this.next.toString();
         
-        
         this.next = inputString + number.toString();
     }
     
@@ -41,7 +40,13 @@ class Calculator {
         if(this.next.length >= 28) { this.next = ''; return }
         let stringOp = operator.toString();
         let inputString = this.next.toString();
-        
+        // * Operator Check
+        if(this.next == '' && /[+*%\/]/.test(stringOp)) return;
+        if(/[.\-+*%\/]/.test(inputString.slice(-1)) && /[+*%\/]/.test(stringOp)){
+            return;
+        } else if (/[-.]/.test(inputString.slice(-1)) && /-/.test(stringOp)) {
+            return;
+        }
         this.next = inputString + stringOp;
     }
     
