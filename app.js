@@ -31,6 +31,16 @@ class Calculator {
     appendNumber(number) {
         if(this.next.length >= 28) { this.next = ''; return }
         let inputString = this.next.toString();
+        // * Multiple Period fix
+        if( number === '.' && (/[.]/.test(inputString.slice(-1)) || /\.[\d]{1,}$/.test(this.next))) {
+            console.log("can't stompo")
+            return
+        }
+        // * Multiple zeros
+        if(number === '0' && inputString.slice(-1) === '0' && !/\.[0]{1,}$/.test(this.next)  ) {
+            console.log('hello')
+            return
+        }
         
         this.next = inputString + number.toString();
     }
