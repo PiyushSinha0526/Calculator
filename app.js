@@ -9,7 +9,6 @@ const deleteBtn = document.querySelector('[data-delete]')
 const clearAllBtn = document.querySelector('[data-clearAll]')
 const nextText = document.querySelector('[data-next]')
 
-
 // + Calculator class
 class Calculator {
     constructor(nextText) {
@@ -33,12 +32,10 @@ class Calculator {
         let inputString = this.next.toString();
         // * Multiple Period fix
         if( number === '.' && (/[.]/.test(inputString.slice(-1)) || /\.[\d]{1,}$/.test(this.next))) {
-            console.log("can't stompo")
             return
         }
         // * Multiple zeros
         if(number === '0' && inputString.slice(-1) === '0' && !/\.[0]{1,}$/.test(this.next)  ) {
-            console.log('hello')
             return
         }
         
@@ -89,7 +86,6 @@ class Calculator {
         }
     }
 }
-
 
 const calculator = new Calculator(nextText);
 
